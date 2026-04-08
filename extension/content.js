@@ -1,8 +1,8 @@
 (function rapiclipBootstrap() {
   "use strict";
 
-  const RAPICLIP_PUBLIC_CLIP_BASE_URL = "http://localhost:5173/clip";
-  // const RAPICLIP_PUBLIC_CLIP_BASE_URL = "https://rapiclip.vercel.app/clip";
+  const RAPICLIP_PUBLIC_CLIP_BASE_URL = "https://rapiclip.vercel.app/clip";
+  // const RAPICLIP_PUBLIC_CLIP_BASE_URL = "http://localhost:5173/clip";
   const RAPICLIP_PANEL_ID = "rapiclip-panel";
   const RAPICLIP_PANEL_CLASS = "rapiclip-panel";
   const RAPICLIP_TITLE_CLASS = "rapiclip-title";

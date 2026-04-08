@@ -10,10 +10,10 @@ export function ClipPage() {
     return (
       <PageFrame
         title="Rapiclip"
-        subtitle="No pudimos interpretar el link del clip."
+        subtitle="El enlace del clip no es válido."
       >
         <section className="error-card">
-          <h2>Link inv\u00e1lido</h2>
+          <h2>Enlace inválido</h2>
           <p>{parsedClip.error}</p>
         </section>
       </PageFrame>
@@ -23,7 +23,7 @@ export function ClipPage() {
   return (
     <PageFrame
       title="Rapiclip"
-      subtitle="Vista previa inicial del clip generado desde la extensi\u00f3n."
+      subtitle="Reproduce clips de YouTube desde un enlace."
     >
       <div className="content-stack">
         <ClipPlayer

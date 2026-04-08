@@ -3,11 +3,10 @@ export function PlayerPlaceholder() {
     <section className="player-card">
       <div className="player-frame">
         <div className="player-copy">
-          <span className="player-badge">Próximamente</span>
-          <h2>Contenedor del reproductor</h2>
+          <span className="player-badge">Rapiclip</span>
+          <h2>Reproductor</h2>
           <p>
-            Este espacio queda preparado para integrar el reproductor de YouTube
-            en el siguiente paso.
+            Espacio reservado para el clip.
           </p>
         </div>
       </div>
