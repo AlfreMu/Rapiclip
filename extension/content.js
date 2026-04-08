@@ -5,7 +5,13 @@
   // const RAPICLIP_PUBLIC_CLIP_BASE_URL = "http://localhost:5173/clip";
   const RAPICLIP_PANEL_ID = "rapiclip-panel";
   const RAPICLIP_PANEL_CLASS = "rapiclip-panel";
+  const RAPICLIP_PANEL_COLLAPSED_CLASS = "rapiclip-panel-collapsed";
+  const RAPICLIP_PANEL_EXPANDED_CLASS = "rapiclip-panel-expanded";
   const RAPICLIP_TITLE_CLASS = "rapiclip-title";
+  const RAPICLIP_HEADER_CLASS = "rapiclip-header";
+  const RAPICLIP_HEADER_BUTTON_ID = "rapiclip-header-toggle";
+  const RAPICLIP_HEADER_ICON_CLASS = "rapiclip-header-icon";
+  const RAPICLIP_BODY_CLASS = "rapiclip-body";
   const RAPICLIP_ACTIONS_CLASS = "rapiclip-actions";
   const RAPICLIP_BUTTON_CLASS = "rapiclip-button";
   const RAPICLIP_DETAILS_CLASS = "rapiclip-details";
@@ -38,7 +44,8 @@
     mountObserver: null,
     pendingMountFrame: null,
     mountRetryCount: 0,
-    historyPatched: false
+    historyPatched: false,
+    panelExpanded: false
   };
 
   function isYouTubeWatchPage() {
@@ -115,10 +122,26 @@
     const panel = document.createElement("section");
     panel.id = RAPICLIP_PANEL_ID;
     panel.className = RAPICLIP_PANEL_CLASS;
+    panel.classList.add(RAPICLIP_PANEL_COLLAPSED_CLASS);
 
-    const title = document.createElement("h2");
+    const header = document.createElement("button");
+    header.id = RAPICLIP_HEADER_BUTTON_ID;
+    header.type = "button";
+    header.className = RAPICLIP_HEADER_CLASS;
+    header.setAttribute("aria-expanded", "false");
+
+    const title = document.createElement("span");
     title.className = RAPICLIP_TITLE_CLASS;
     title.textContent = "Rapiclip";
+
+    const headerIcon = document.createElement("span");
+    headerIcon.className = RAPICLIP_HEADER_ICON_CLASS;
+    headerIcon.textContent = "▸";
+
+    header.append(title, headerIcon);
+
+    const body = document.createElement("div");
+    body.className = RAPICLIP_BODY_CLASS;
 
     const actions = document.createElement("div");
     actions.className = RAPICLIP_ACTIONS_CLASS;
@@ -157,8 +180,10 @@
     linkHint.textContent = "Click para copiar";
 
     linkSection.append(linkLabel, linkValue, linkHint);
-    panel.append(title, actions, details, linkSection);
+    body.append(actions, details, linkSection);
+    panel.append(header, body);
     bindPanelEvents(panel);
+    applyPanelExpansionState(panel, false);
     return panel;
   }
 
@@ -188,11 +213,37 @@
     }
 
     return {
+      panel,
+      headerButton: panel.querySelector(`#${RAPICLIP_HEADER_BUTTON_ID}`),
+      headerIcon: panel.querySelector(`.${RAPICLIP_HEADER_ICON_CLASS}`),
+      body: panel.querySelector(`.${RAPICLIP_BODY_CLASS}`),
       startValue: panel.querySelector(`#${RAPICLIP_START_VALUE_ID}`),
       endValue: panel.querySelector(`#${RAPICLIP_END_VALUE_ID}`),
       statusValue: panel.querySelector(`#${RAPICLIP_STATUS_VALUE_ID}`),
       linkValue: panel.querySelector(`#${RAPICLIP_LINK_VALUE_ID}`)
     };
+  }
+
+  function applyPanelExpansionState(panel, isExpanded) {
+    const ui = getUiElements();
+    if (!ui || ui.panel !== panel) {
+      return;
+    }
+
+    APP_STATE.panelExpanded = isExpanded;
+    panel.classList.toggle(RAPICLIP_PANEL_COLLAPSED_CLASS, !isExpanded);
+    panel.classList.toggle(RAPICLIP_PANEL_EXPANDED_CLASS, isExpanded);
+    ui.headerButton.setAttribute("aria-expanded", String(isExpanded));
+    ui.headerIcon.textContent = isExpanded ? "▾" : "▸";
+  }
+
+  function togglePanelExpansion() {
+    const panel = getExistingPanel();
+    if (!panel) {
+      return;
+    }
+
+    applyPanelExpansionState(panel, !APP_STATE.panelExpanded);
   }
 
   function renderPanel() {
@@ -380,6 +431,14 @@
       return;
     }
 
+    const headerButton = panel.querySelector(`#${RAPICLIP_HEADER_BUTTON_ID}`);
+    if (headerButton) {
+      headerButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        togglePanelExpansion();
+      });
+    }
+
     panel.addEventListener("click", (event) => {
       const target = event.target;
       if (!(target instanceof HTMLElement)) {
@@ -462,6 +521,7 @@
         mountTarget.prepend(existingPanel);
       }
 
+      applyPanelExpansionState(existingPanel, APP_STATE.panelExpanded);
       renderPanel();
       stopMountObserver();
       return true;

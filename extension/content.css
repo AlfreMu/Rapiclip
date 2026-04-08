@@ -11,12 +11,53 @@
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
+.rapiclip-panel-collapsed {
+  padding-bottom: 10px;
+}
+
+.rapiclip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.rapiclip-header:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.24);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
 .rapiclip-title {
-  margin: 0 0 8px;
-  font-size: 15px;
+  margin: 0;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: 0.01em;
+}
+
+.rapiclip-header-icon {
+  margin-left: 10px;
+  color: rgba(241, 241, 241, 0.72);
+  font-size: 13px;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+.rapiclip-body {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.rapiclip-panel-collapsed .rapiclip-body {
+  display: none;
 }
 
 .rapiclip-actions {
@@ -27,14 +68,14 @@
 }
 
 .rapiclip-button {
-  min-width: 42px;
-  padding: 7px 10px;
+  min-width: 38px;
+  padding: 6px 9px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.08);
   color: #f1f1f1;
   font: inherit;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
@@ -52,7 +93,7 @@
 
 .rapiclip-details {
   display: grid;
-  gap: 6px;
+  gap: 5px;
 }
 
 .rapiclip-detail-row {
@@ -60,8 +101,8 @@
   align-items: baseline;
   gap: 6px;
   margin: 0;
-  font-size: 12.5px;
-  line-height: 1.3;
+  font-size: 12px;
+  line-height: 1.25;
 }
 
 .rapiclip-detail-label {
@@ -78,14 +119,14 @@
 }
 
 .rapiclip-link-section {
-  margin-top: 12px;
-  padding-top: 10px;
+  margin-top: 10px;
+  padding-top: 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .rapiclip-link-label {
-  margin: 0 0 6px;
-  font-size: 12px;
+  margin: 0 0 5px;
+  font-size: 11.5px;
   font-weight: 600;
   color: rgba(241, 241, 241, 0.72);
 }
@@ -93,13 +134,13 @@
 .rapiclip-link-value {
   display: block;
   margin: 0;
-  padding: 9px 10px;
+  padding: 8px 10px;
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: #f5f5f5;
-  font-size: 11.5px;
-  line-height: 1.35;
+  font-size: 11px;
+  line-height: 1.3;
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -123,8 +164,8 @@
 }
 
 .rapiclip-link-hint {
-  margin: 6px 0 0;
-  font-size: 11px;
-  line-height: 1.25;
+  margin: 5px 0 0;
+  font-size: 10.5px;
+  line-height: 1.2;
   color: rgba(241, 241, 241, 0.6);
 }
