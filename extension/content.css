@@ -1,0 +1,130 @@
+#rapiclip-panel {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(15, 15, 15, 0.96), rgba(35, 35, 35, 0.96));
+  color: #f1f1f1;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.rapiclip-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.rapiclip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.rapiclip-button {
+  min-width: 42px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f1f1;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.rapiclip-button:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.rapiclip-button:active {
+  transform: translateY(0);
+}
+
+.rapiclip-details {
+  display: grid;
+  gap: 6px;
+}
+
+.rapiclip-detail-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.3;
+}
+
+.rapiclip-detail-label {
+  color: rgba(241, 241, 241, 0.72);
+  font-weight: 600;
+}
+
+.rapiclip-detail-value {
+  color: #f1f1f1;
+}
+
+.rapiclip-status {
+  color: rgba(241, 241, 241, 0.82);
+}
+
+.rapiclip-link-section {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rapiclip-link-label {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(241, 241, 241, 0.72);
+}
+
+.rapiclip-link-value {
+  display: block;
+  margin: 0;
+  padding: 9px 10px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f5f5f5;
+  font-size: 11.5px;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.rapiclip-link-value:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.rapiclip-link-value:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.34);
+  outline-offset: 2px;
+}
+
+.rapiclip-link-value-empty {
+  color: rgba(241, 241, 241, 0.56);
+}
+
+.rapiclip-link-hint {
+  margin: 6px 0 0;
+  font-size: 11px;
+  line-height: 1.25;
+  color: rgba(241, 241, 241, 0.6);
+}
