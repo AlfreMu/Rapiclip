@@ -1,4 +1,5 @@
 import { ClipPage } from "./pages/ClipPage";
+import { PageFrame } from "./components/PageFrame";
 
 function App() {
   const path = window.location.pathname;
@@ -8,15 +9,15 @@ function App() {
   }
 
   return (
-    <main className="app-shell">
-      <section className="hero-card">
-        <span className="eyebrow">Rapiclip</span>
-        <h1>Ruta no encontrada</h1>
-        <p className="hero-copy">
-          Esta app espera links públicos con la ruta <code>/clip</code>.
-        </p>
+    <PageFrame
+      title="Rapiclip"
+      subtitle="Esta app espera links públicos con la ruta /clip."
+    >
+      <section className="error-card">
+        <h2>Ruta no encontrada</h2>
+        <p>Por favor asegúrate de ingresar una ruta válida de videoclip.</p>
       </section>
-    </main>
+    </PageFrame>
   );
 }
 
